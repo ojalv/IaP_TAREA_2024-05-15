@@ -22,7 +22,7 @@ const cuenta = {
 function iniciarSesion(pinIngresado) {
   if (pinIngresado === cuenta.pinCorrecto) {
     console.log("Sesión iniciada correctamente.");
-    return true
+    return true;
   } else {
     console.error("Error: PIN incorrecto. Inténtelo de nuevo.");
     return false; // Indica que la sesión no se inició
@@ -79,29 +79,33 @@ function mostrarMenu() {
   console.log("3. Retirar");
   console.log("4. Salir");
 
-  let opcion = prompt("Ingrese una opción (1-4): ");
-  opcion = parseInt(opcion); // Convertir la entrada a número
+  let salir = false;
+  opcion = prompt("Ingrese una opción (1-4): ");
 
-  switch (opcion) {
-    case 1:
-      consultarSaldo();
-      break;
-    case 2:
-      let montoDepositar = parseFloat(
-        prompt("Ingrese el monto a depositar: $")
-      );
-      depositar(montoDepositar);
-      break;
-    case 3:
-      let montoRetirar = parseFloat(prompt("Ingrese el monto a retirar: $"));
-      retirar(montoRetirar);
-      break;
-    case 4:
-      console.log("Saliendo del cajero automático...");
-      break;
-    default:
-      console.error("Opción inválida. Inténtelo de nuevo.");
-  }
+  do {
+    opcion = parseInt(prompt("Ingrese una opción (1-4): ")); // Convertir la entrada a número
+    switch (opcion) {
+      case 1:
+        consultarSaldo();
+        break;
+      case 2:
+        let montoDepositar = parseFloat(
+          prompt("Ingrese el monto a depositar: $")
+        );
+        depositar(montoDepositar);
+        break;
+      case 3:
+        let montoRetirar = parseFloat(prompt("Ingrese el monto a retirar: $"));
+        retirar(montoRetirar);
+        break;
+      case 4:
+        console.log("Saliendo del cajero automático...");
+        salir = true;
+        break;
+      default:
+        console.error("Opción inválida. Inténtelo de nuevo.");
+    }
+  } while (!salir);
 }
 
 // Iniciar sesión y mostrar el menú principal
