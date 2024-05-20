@@ -22,6 +22,7 @@ const cuenta = {
 function iniciarSesion(pinIngresado) {
   if (pinIngresado === cuenta.pinCorrecto) {
     console.log("Sesión iniciada correctamente.");
+    return true
   } else {
     console.error("Error: PIN incorrecto. Inténtelo de nuevo.");
     return false; // Indica que la sesión no se inició
